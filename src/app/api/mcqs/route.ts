@@ -1,6 +1,3 @@
-
-
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
@@ -8,6 +5,7 @@ export async function GET() {
   try {
     const apiKey = process.env.GEMINI_API_KEY || "";
     if (!apiKey) {
+      console.error("API key is missing");
       return NextResponse.json({ error: "API key is required" }, { status: 400 });
     }
 
@@ -44,18 +42,19 @@ export async function GET() {
     const response = await result.response;
     const output = await response.text();
 
-    console.log("Raw Gemini API Output:", output); // Log the raw output
+    console.log("Raw Gemini API Output:", output); // Log the raw output for debugging
+    console.error("Output from API:", output); // Additional logging for output
 
     // Extract JSON objects from the output
-    const jsonMatches = output.match(/\{[^{}]*\}/g);
+    const jsonMatches = output.match(/({[^{}]*})/g);
     if (!jsonMatches) {
+      console.error("No valid JSON found in the API response");
       throw new Error("No valid JSON found in the API response");
     }
 
     // Parse each JSON object
     const mcqs = jsonMatches.map((jsonStr) => JSON.parse(jsonStr));
     
-
     return NextResponse.json({ mcqs });
   } catch (error) {
     console.error("API Error:", error); // Log the full error
