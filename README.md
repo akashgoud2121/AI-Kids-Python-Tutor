@@ -67,7 +67,7 @@ GEMINI_API_KEY=AIzaSyC_9eBWB4EpTo8fpuTSutPf5bIo2F5R-zU
 ---
 
 ## **Hosted Application**
-The application is hosted on [Vercel]. You can access it at: ()
+The application is hosted on [Vercel]. You can access it at: (https://ai-kids-python-tutor.vercel.app/)
 
 
 Thank you for using the AI-Powered Python Tutor! Happy coding! 🚀
