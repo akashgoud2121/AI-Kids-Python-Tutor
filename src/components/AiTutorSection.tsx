@@ -34,7 +34,7 @@ const AiTutorSection = ({ setIsMcq, isMcq }: { setIsMcq: (isMcq: boolean) => voi
     setIsLoading(true);
     try {
       // const res = await fetch("/api/ai", {
-      const res = await fetch("https://skc-udayasishbora-ai-powered-python-tutor-pykids.vercel.app/api/ai", {
+      const res = await fetch("https://ai-kids-python-tutor.vercel.app/api/ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
